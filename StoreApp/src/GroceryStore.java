@@ -6,6 +6,8 @@ public class GroceryStore {
     private static int goodsCount = 0;
     private static int nextId = 1;
     private static final String ADMIN_PWD = "123456";
+    private static Order[] orderHistory = new Order[100]; 
+    private static int orderCount = 0; 
 
     public static void main(String[] args) {
         System.out.println("===== Small Grocery Store =====");
@@ -242,6 +244,7 @@ public class GroceryStore {
             }
         }
     }
+    
 
     static double buyGoods(double budget) {
         System.out.println("===== Buy Products =====");
@@ -318,8 +321,29 @@ public class GroceryStore {
         selected.setStock(selected.getStock() - quantity);
         budget -= total;
         System.out.println("Purchase successful! Remaining Budget: " + budget);
+         Order newOrder = new Order(selectedGoods, quantity, totalPrice, budget);
+        orderHistory[orderCount] = newOrder;
+        orderCount++;
 
         return budget;
+    }
+     private static void viewOrderHistory() {
+        System.out.println("===== Order History =====");
+        if (orderCount == 0) {
+            System.out.println("No order history available!");
+            return;
+        }
+
+        System.out.println("----- All Orders -----");
+        for (int i = 0; i < orderCount; i++) {
+            Order order = orderHistory[i];
+            System.out.println("Order ID: " + order.getOrderId() +
+                    " | Goods ID: " + order.getGoodsId() +
+                    " | Goods Name: " + order.getGoodsName() +
+                    " | Quantity: " + order.getQuantity() +
+                    " | Total Price: " + order.getTotalPrice() +
+                    " | Remaining Budget: " + order.getRemainingBudget());
+        }
     }
 
     static Goods findCheapestProduct() {
