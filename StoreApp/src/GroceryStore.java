@@ -228,7 +228,7 @@ public class GroceryStore {
         sc.nextLine();
 
         while (true) {
-            System.out.println("1. Buy Product  0. Back");
+            System.out.println("1. Buy Product 2. View OrderHistory 0. Back");
             System.out.print("Choose: ");
             int customerChoice = sc.nextInt();
             sc.nextLine();
@@ -321,7 +321,7 @@ public class GroceryStore {
         selected.setStock(selected.getStock() - quantity);
         budget -= total;
         System.out.println("Purchase successful! Remaining Budget: " + budget);
-         Order newOrder = new Order(selectedGoods, quantity, totalPrice, budget);
+         Order newOrder = new Order(selected, quantity, total, budget);
         orderHistory[orderCount] = newOrder;
         orderCount++;
 
