@@ -94,7 +94,7 @@ public class GroceryStore {
                 " | Stock: " + targetGoods.getStock());
 
         while (true) {
-            System.out.println("\nWhat to modify?");
+            System.out.println("What to modify?");
             System.out.println("1. Name  2. Price  3. Stock  0. Back");
             System.out.print("Choose: ");
             int modifyChoice = sc.nextInt();
