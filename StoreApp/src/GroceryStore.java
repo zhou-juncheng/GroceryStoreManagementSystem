@@ -69,6 +69,14 @@ public class GroceryStore {
             System.out.println("No products available to modify!");
             return;
         }
+        System.out.println("----- Current Product List -----");
+        for (int i = 0; i < goodsCount; i++) {
+            System.out.println("ID: " + goods[i].getId() +
+                    " | Name: " + goods[i].getName() +
+                    " | Price: " + goods[i].getPrice() +
+                    " | Stock: " + goods[i].getStock());
+        }
+        System.out.println("-------------------------------");
 
         System.out.print("Enter Product ID to modify: ");
         int modifyId = sc.nextInt();
