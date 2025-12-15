@@ -1,4 +1,4 @@
-static class Order {
+public class Order {
     private static int nextOrderId = 1;  // 订单自增ID
     private int orderId;                 // 订单ID
     private Goods goods;                 // 关联的商品对象（核心改造点）
