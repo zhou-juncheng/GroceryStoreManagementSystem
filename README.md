@@ -207,6 +207,27 @@ public class StoreApp {
                     " | Price: " + goods[i].price +
                     " | Stock: " + goods[i].stock);// Print product information
         }
+        System.out.println("----- Price Query -----");
+        while (true) {
+            System.out.print("Do you want to view the cheapest product? (Y/N): ");
+            String viewCheapest = sc.nextLine().trim().toUpperCase();
+
+            if (viewCheapest.equals("Y") || viewCheapest.equals("N")) {
+                if (viewCheapest.equals("Y")) {
+                    // find cheapest one
+                    Goods cheapestGoods = findCheapestProduct();
+                    System.out.println("----- Cheapest Product -----");
+                    System.out.println("ID: " + cheapestGoods.id +
+                            " | Name: " + cheapestGoods.name +
+                            " | Price: " + cheapestGoods.price +
+                            " | Stock: " + cheapestGoods.stock);
+                }
+                break;
+            }
+            else {
+                System.out.println("Invalid input! Please enter Y or N.");
+            }
+        }
 
         System.out.print("Enter Product ID: ");//Prompt user to enter product ID
         int id = sc.nextInt();//Read the ID entered by the user
@@ -251,5 +272,18 @@ public class StoreApp {
         System.out.println("Purchase successful! Remaining Budget: " + budget);//Display purchase success message and remaining budget to the user
 
         return budget;
+    }
+    static Goods findCheapestProduct() {
+        if (goodsCount == 0) {
+            return null;
+        }
+
+        Goods cheapest = goods[0];
+        for (int i = 1; i < goodsCount; i++) {
+            if (goods[i].price < cheapest.price) {
+                cheapest = goods[i];
+            }
+        }
+        return cheapest;
     }
 }
