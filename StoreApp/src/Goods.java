@@ -28,10 +28,10 @@ public class Goods {
     }
 
     public void setName(String name) {
-        if (!name.trim().isEmpty() && name.length() <= 50) {
+        if (!name.isEmpty() && name.length() <= 50) {
             this.name = name;
         } else {
-            System.out.println("商品名称不能为空且长度不超过50！");
+            System.out.println("The product name cannot be empty and its length should not exceed 50！");
         }
     }
 
@@ -39,7 +39,7 @@ public class Goods {
         if (price > 0) {
             this.price = price;
         } else {
-            System.out.println("价格必须大于0！");
+            System.out.println("The price must be greater than 0！");
         }
     }
 
@@ -47,7 +47,8 @@ public class Goods {
         if (stock >= 0) {
             this.stock = stock;
         } else {
-            System.out.println("库存不能为负数！");
+            System.out.println("cannot be negative！");
         }
     }
 }
+
