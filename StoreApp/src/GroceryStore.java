@@ -213,10 +213,16 @@ public class GroceryStore {
         double budget;
         while (true) {
             System.out.print("Enter your budget: ");
-            budget = sc.nextDouble();
-            if (budget > 0) break;
-            System.out.println("Budget must be greater than 0!");
-        }
+           String budgetInput = sc.nextLine().trim(); // trim().learn for AI
+    try {
+        budget = Double.parseDouble(budgetInput); // turn to number
+        if (budget > 0) break;
+        System.out.println("Budget must be greater than 0!");
+    } catch (NumberFormatException e) {
+        // warn if it isn't number
+        System.out.println("Please enter a valid number (e.g., 100, 99.9)!");
+    }
+}
         sc.nextLine();
 
         while (true) {
@@ -227,6 +233,7 @@ public class GroceryStore {
 
             switch (customerChoice) {
                 case 1 -> budget = buyGoods(budget);
+                case 2 -> viewOrderHistory();
                 case 0 -> {
                     System.out.println("Thanks for visiting!");
                     return;
